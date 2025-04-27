@@ -38,4 +38,6 @@ describe('HammingCode', function() {
       assert.throws(() => hamming.verifyChecksum(data, validChecksum), Error, "verifyChecksum: input must be a 7-bit array");
     });
   });
+
 });
+
