@@ -95,6 +95,17 @@ class HammingCode {
 
     return errorPosition === 0;
   }
+
+  // new: Обчислення контрольної суми для коду Геммінга
+static calculateChecksum(data) {
+  if (!Array.isArray(data) || data.length !== 7) {
+    throw new Error("calculateChecksum: input must be a 7-bit array");
+  }
+
+  // Контрольна сума як XOR всіх бітів
+  return data.reduce((checksum, bit) => checksum ^ bit, 0);
+}
+  
 }
 
 module.exports = HammingCode;
