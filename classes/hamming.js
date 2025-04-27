@@ -104,8 +104,16 @@ static calculateChecksum(data) {
 
   // Контрольна сума як XOR всіх бітів
   return data.reduce((checksum, bit) => checksum ^ bit, 0);
+  }
+    // new: Перевірка, чи змінилася контрольна сума
+static verifyChecksum(data, originalChecksum) {
+  if (!Array.isArray(data) || data.length !== 7) {
+    throw new Error("verifyChecksum: input must be a 7-bit array");
+  }
+
+  const currentChecksum = HammingCode.calculateChecksum(data);
+  return currentChecksum === originalChecksum;
 }
-  
 }
 
 module.exports = HammingCode;
